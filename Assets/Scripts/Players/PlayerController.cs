@@ -2,7 +2,7 @@
  * Script Name: PlayerController
  * Author: 김우성
  * Date Created: 2025-04-30
- * Last Modified: 0000-00-00
+ * Last Modified: 2025-05-01
  * Description
  * - 플레이어 캐릭터의 동작과 입력 처리 담당
  *********************************************************/
@@ -19,6 +19,9 @@ public class PlayerController : MonoBehaviour
     WeaponManager _weaponManager;
     Rigidbody2D _rb;
 
+    UIManager _uiManager;
+    
+
     /* Status */
     [Header("Movement")]
     [SerializeField] float _moveSpeed = 5f;
@@ -29,11 +32,26 @@ public class PlayerController : MonoBehaviour
         AssignComponents();
     }
 
+    private void Start()
+    {
+        InitializeUIManager();
+    }
+
     private void AssignComponents()
     {
         _inputHandler = GetComponent<PlayerInputHandler>();
         _weaponManager = GetComponent<WeaponManager>();
         _rb = GetComponent<Rigidbody2D>();
+    }
+
+    private void InitializeUIManager()
+    {
+        _uiManager = UIManager.Instance;
+        if (_uiManager != null)
+        {
+            Debug.Log("UI Manager Initialization");
+            _uiManager.Initialize(_weaponManager);
+        }
     }
 
 
@@ -77,16 +95,19 @@ public class PlayerController : MonoBehaviour
         if (_inputHandler.WeaponSlot1Triggered)
         {
             _weaponManager.SwitchWeapon(0);
+            _uiManager?.UpdateWeaponUI();
             _inputHandler.ConsumeWeaponSlot1();
         }
         else if (_inputHandler.WeaponSlot2Triggered) 
         {
             _weaponManager.SwitchWeapon(1);
+            _uiManager?.UpdateWeaponUI();
             _inputHandler.ConsumeWeaponSlot2();
         }
         else if ( _inputHandler.WeaponSlot3Triggered)
         {
             _weaponManager.SwitchWeapon(2);
+            _uiManager?.UpdateWeaponUI();
             _inputHandler.ConsumeWeaponSlot3();
         }
         else

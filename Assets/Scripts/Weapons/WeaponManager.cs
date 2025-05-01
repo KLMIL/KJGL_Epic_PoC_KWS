@@ -53,6 +53,11 @@ public class WeaponManager : MonoBehaviour
         }
     }
 
+    public IWeapon GetcurrentWeapon()
+    {
+        return _currentWeapon;
+    }
+
     public string GetCurrentWeaponName()
     {
         return _currentWeapon != null ? _currentWeapon.Name : "None";
