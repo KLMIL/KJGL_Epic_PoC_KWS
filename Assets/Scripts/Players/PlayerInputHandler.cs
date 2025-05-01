@@ -1,11 +1,11 @@
-/**********************************************************
+ï»¿/**********************************************************
  * Script Name: PlayerInputHandler
- * Author: ±è¿ì¼º
- * Date Created: 2025-05-01
+ * Author: ê¹€ìš°ì„±
+ * Date Created: 2025-04-30
  * Last Modified: 0000-00-00
  * Description
- * - ÇÃ·¹ÀÌ¾îÀÇ ÀÔ·Â Ã³¸® ¹× 
- *   ÇØ´çÇÏ´Â ¾×¼Ç È£ÃâÇÏ¿© ÇÃ·¹ÀÌ¾î »óÅÂ ¾÷µ¥ÀÌÅÍ
+ * - í”Œë ˆì´ì–´ì˜ ìž…ë ¥ ì²˜ë¦¬ ë° 
+ *   í•´ë‹¹í•˜ëŠ” ì•¡ì…˜ í˜¸ì¶œí•˜ì—¬ í”Œë ˆì´ì–´ ìƒíƒœ ì—…ë°ì´í„°
  *********************************************************/
 
 using UnityEngine;
@@ -16,18 +16,26 @@ public class PlayerInputHandler : MonoBehaviour
 
     public Vector2 MoveInput { get; private set; }
     public bool AttackTriggered { get; private set; }
+    public bool WeaponSlot1Triggered { get; private set; }
+    public bool WeaponSlot2Triggered { get; private set; }
+    public bool WeaponSlot3Triggered { get; private set; }
 
 
     private void Awake()
     {
         _inputActions = new InputActions();
 
-        // ÀÌµ¿ ÀÔ·Â ÀÌº¥Æ® ¿¬°á
+        // ì´ë™ ìž…ë ¥ ì´ë²¤íŠ¸ ì—°ê²°
         _inputActions.Player.Move.performed += ctx => MoveInput = ctx.ReadValue<Vector2>();
         _inputActions.Player.Move.canceled += _ => MoveInput = Vector2.zero;
 
-        // °ø°Ý ÀÔ·Â ÀÌº¥Æ® ¿¬°á
+        // ê³µê²© ìž…ë ¥ ì´ë²¤íŠ¸ ì—°ê²°
         _inputActions.Player.Attack.performed += _ => AttackTriggered = true;
+
+        // ë¬´ê¸° ì „í™˜ ìž…ë ¥ ì´ë²¤íŠ¸ ì—°ê²°
+        _inputActions.Player.WeaponSlot1.performed += _ => WeaponSlot1Triggered = true;
+        _inputActions.Player.WeaponSlot2.performed += _ => WeaponSlot2Triggered = true;
+        _inputActions.Player.WeaponSlot3.performed += _ => WeaponSlot3Triggered = true;
     }
 
     private void OnEnable() => _inputActions.Enable();
@@ -35,13 +43,19 @@ public class PlayerInputHandler : MonoBehaviour
 
     private void OnDestroy()
     {
-        // ÀÌº¥Æ® ÇØÁ¦
+        // ì´ë²¤íŠ¸ í•´ì œ
         _inputActions.Player.Move.performed -= ctx => MoveInput = ctx.ReadValue<Vector2>();
         _inputActions.Player.Move.canceled -= _ => MoveInput = Vector2.zero;
         _inputActions.Player.Attack.performed -= _ => AttackTriggered = true;
+        _inputActions.Player.WeaponSlot1.performed -= _ => WeaponSlot1Triggered = true;
+        _inputActions.Player.WeaponSlot2.performed -= _ => WeaponSlot2Triggered = true;
+        _inputActions.Player.WeaponSlot3.performed -= _ => WeaponSlot3Triggered = true;
     }
 
 
-    // ÇÃ·¹ÀÌ¾î °ø°Ý ¿Ï·á½Ã »óÅÂ°ª º¯°æ
+    // ìž…ë ¥ ì†Œë¹„ ë©”ì„œë“œ -> ìž…ë ¥ ë™ìž‘ ìˆ˜í–‰ í›„ ìƒíƒœ ì´ˆê¸°í™”
     public void ConsumeAttack() => AttackTriggered = false;
+    public void ConsumeWeaponSlot1() => WeaponSlot1Triggered = false;
+    public void ConsumeWeaponSlot2() => WeaponSlot2Triggered = false;
+    public void ConsumeWeaponSlot3() => WeaponSlot3Triggered = false;
 }

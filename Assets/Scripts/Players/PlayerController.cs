@@ -1,19 +1,22 @@
-/**********************************************************
+ï»¿/**********************************************************
  * Script Name: PlayerController
- * Author: ±è¿ì¼º
- * Date Created: 2025-05-01
+ * Author: ê¹€ìš°ì„±
+ * Date Created: 2025-04-30
  * Last Modified: 0000-00-00
  * Description
- * - ÇÃ·¹ÀÌ¾î Ä³¸¯ÅÍÀÇ µ¿ÀÛ°ú ÀÔ·Â Ã³¸® ´ã´ç
+ * - í”Œë ˆì´ì–´ ìºë¦­í„°ì˜ ë™ì‘ê³¼ ì…ë ¥ ì²˜ë¦¬ ë‹´ë‹¹
  *********************************************************/
 
 using UnityEngine;
 
-[RequireComponent(typeof(PlayerInputHandler))] // PlayerInputHandler ÄÄÆ÷³ÍÆ®°¡ ÇÊ¼öÀÓÀ» ¸í½Ã
+// RequireComponent: í•´ë‹¹ ì»´í¬ë„ŒíŠ¸ê°€ í•„ìˆ˜ì„ì„ ëª…ì‹œ. ì—†ë‹¤ë©´ ìë™ ì¶”ê°€
+[RequireComponent(typeof(PlayerInputHandler))] 
+[RequireComponent(typeof(WeaponManager))]
 public class PlayerController : MonoBehaviour
 {
     /* Components */ 
     PlayerInputHandler _inputHandler;
+    WeaponManager _weaponManager;
     Rigidbody2D _rb;
 
     /* Status */
@@ -29,20 +32,22 @@ public class PlayerController : MonoBehaviour
     private void AssignComponents()
     {
         _inputHandler = GetComponent<PlayerInputHandler>();
+        _weaponManager = GetComponent<WeaponManager>();
         _rb = GetComponent<Rigidbody2D>();
     }
 
 
     private void FixedUpdate()
     {
-        // ÇÃ·¹ÀÌ¾î ¿òÁ÷ÀÓ ÀÌº¥Æ®
+        // í”Œë ˆì´ì–´ ì›€ì§ì„ ì´ë²¤íŠ¸
         HandleMovement();
     }
 
     private void Update()
     {
-        // ÇÃ·¹ÀÌ¾î °ø°İ ÀÌº¥Æ®
+        // í”Œë ˆì´ì–´ ê³µê²© ì´ë²¤íŠ¸ -> WeaponManager êµ¬í˜„ì„ ìœ„í•´ ìš°ì„  ì œì™¸
         HandleAttack();
+        HandleWeaponSwitch();
     }
 
     private void HandleMovement()
@@ -62,7 +67,31 @@ public class PlayerController : MonoBehaviour
         if (_inputHandler.AttackTriggered)
         {
             Debug.Log("Attack!");
-            _inputHandler.ConsumeAttack(); // °ø°İ ÀÔ·Â ¼Òºñ
+            _weaponManager.Attack();
+            _inputHandler.ConsumeAttack(); // ê³µê²© ì…ë ¥ ì†Œë¹„
+        }
+    }
+
+    private void HandleWeaponSwitch()
+    {
+        if (_inputHandler.WeaponSlot1Triggered)
+        {
+            _weaponManager.SwitchWeapon(0);
+            _inputHandler.ConsumeWeaponSlot1();
+        }
+        else if (_inputHandler.WeaponSlot2Triggered) 
+        {
+            _weaponManager.SwitchWeapon(1);
+            _inputHandler.ConsumeWeaponSlot2();
+        }
+        else if ( _inputHandler.WeaponSlot3Triggered)
+        {
+            _weaponManager.SwitchWeapon(2);
+            _inputHandler.ConsumeWeaponSlot3();
+        }
+        else
+        {
+            /* Do Nothing */
         }
     }
 }
