@@ -1,10 +1,10 @@
-/**********************************************************
+ï»¿/**********************************************************
  * Script Name: EnemyBase
- * Author: ±è¿ì¼º
+ * Author: ê¹€ìš°ì„±
  * Date Created: 2025-05-01
  * Last Modified: 0000-00-00
  * Description: 
- * - ¸ğµç ÀûÀÌ °øÅëÀ¸·Î °¡Áö´Â ¼Ó¼º°ú µ¿ÀÛÀ» Á¤ÀÇÇÏ´Â Ãß»óÅ¬·¡½º
+ * - ëª¨ë“  ì ì´ ê³µí†µìœ¼ë¡œ ê°€ì§€ëŠ” ì†ì„±ê³¼ ë™ì‘ì„ ì •ì˜í•˜ëŠ” ì¶”ìƒí´ë˜ìŠ¤
  *********************************************************/
 
 using UnityEngine;
@@ -23,7 +23,7 @@ public abstract class EnemyBase : MonoBehaviour
     protected virtual void Awake()
     {
         _currentHealth = _maxHealth;
-        // ÀÌºÎºĞ ¾Ö¸ÅÇÏ´Ù. 
+        // ì´ë¶€ë¶„ ì• ë§¤í•˜ë‹¤. 
         playerTransform = GameObject.FindGameObjectWithTag("Player").transform; 
     }
 
@@ -51,5 +51,5 @@ public abstract class EnemyBase : MonoBehaviour
         Destroy(gameObject);
     }
 
-    protected abstract void Attack(); // °¢ ¸ó½ºÅÍÀÇ °íÀ¯ °ø°İ ±¸Çö
+    protected abstract void Attack(); // ê° ëª¬ìŠ¤í„°ì˜ ê³ ìœ  ê³µê²© êµ¬í˜„
 }

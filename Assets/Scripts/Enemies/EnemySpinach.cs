@@ -1,10 +1,10 @@
-/**********************************************************
+ï»¿/**********************************************************
  * Script Name: EnmySpinach
- * Author: ±è¿ì¼º
+ * Author: ê¹€ìš°ì„±
  * Date Created: 2025-05-01
  * Last Modified: 0000-00-00
  * Description: 
- * - ½Ä¹° ¸ó½ºÅÍ Áß, Æ÷ÀÚ °ø°İÀ» ÇÏ´Â Spinach
+ * - ì‹ë¬¼ ëª¬ìŠ¤í„° ì¤‘, í¬ì ê³µê²©ì„ í•˜ëŠ” Spinach
  *********************************************************/
 
 using EnemyAttack;
@@ -12,11 +12,11 @@ using UnityEngine;
 
 public class EnemySpinach : EnemyBase
 {
-    [SerializeField] GameObject _sporePrefab; // Æ÷ÀÚ ÇÁ¸®Æé
+    [SerializeField] GameObject _sporePrefab; // í¬ì í”„ë¦¬í©
 
-    [SerializeField] float _sporeSpeed = 5f; // Æ÷ÀÚ ¼Óµµ
-    [SerializeField] float _sporeDamage = 5f; // Æ÷ÀÚ ´ë¹ÌÁö
-    [SerializeField] int _sporeCount = 8; // ÇÑ ¹ø¿¡ ¹ß»çÇÒ Æ÷ÀÚ ¼ö
+    [SerializeField] float _sporeSpeed = 5f; // í¬ì ì†ë„
+    [SerializeField] float _sporeDamage = 5f; // í¬ì ëŒ€ë¯¸ì§€
+    [SerializeField] int _sporeCount = 8; // í•œ ë²ˆì— ë°œì‚¬í•  í¬ì ìˆ˜
 
     protected override void Attack()
     {
@@ -25,14 +25,14 @@ public class EnemySpinach : EnemyBase
         Debug.Log($"Spawning {_sporeCount} spores from SpinachEenmy at {transform.position}");
         for (int i = 0; i < _sporeCount; i++)
         {
-            // Àû °³Ã¼¸¦ Áß½ÉÀ¸·Î 360µµ¿¡ count¸¸Å­ ¹æ»çÇüÀ¸·Î ¹ß»ç
+            // ì  ê°œì²´ë¥¼ ì¤‘ì‹¬ìœ¼ë¡œ 360ë„ì— countë§Œí¼ ë°©ì‚¬í˜•ìœ¼ë¡œ ë°œì‚¬
             float angle = i * (360f / _sporeCount);
             Vector2 direction = new Vector2(Mathf.Cos(angle * Mathf.Deg2Rad), Mathf.Sin(angle * Mathf.Deg2Rad));
             Vector2 spawnPos = (Vector2)transform.position;
 
             GameObject spore = Instantiate(_sporePrefab, new Vector3(spawnPos.x, spawnPos.y, 0), Quaternion.identity);
 
-            // IEnemyAttack ÀÎÅÍÆäÀÌ½º·Î ¼³Á¤
+            // IEnemyAttack ì¸í„°í˜ì´ìŠ¤ë¡œ ì„¤ì •
             IEnemyAttack sporeAttack = spore.GetComponent<IEnemyAttack>();
             if (sporeAttack != null)
             {

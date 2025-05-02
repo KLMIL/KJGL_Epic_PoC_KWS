@@ -1,10 +1,10 @@
-/**********************************************************
+ï»¿/**********************************************************
  * Script Name: IEnemyAttack
- * Author: ±è¿ì¼º
+ * Author: ê¹€ìš°ì„±
  * Date Created: 2025-05-01
  * Last Modified: 0000-00-00
  * Description: 
- * - ÀûÀÇ ¸ğµç °ø°İÀÌ ÀÏ°üµÈ ¹æ½ÄÀ¸·Î µ¿ÀÛÇÏµµ·Ï ÇÔ
+ * - ì ì˜ ëª¨ë“  ê³µê²©ì´ ì¼ê´€ëœ ë°©ì‹ìœ¼ë¡œ ë™ì‘í•˜ë„ë¡ í•¨
  *********************************************************/
 
 using UnityEngine;
@@ -13,7 +13,7 @@ namespace EnemyAttack
 {
     public interface IEnemyAttack
     {
-        void SetProperties(float damage, Vector2? direction = null, float speed = 0f); // °ø°İ ¼Óµµ µî ÇÊ¿äÇÑ ¼Ó¼º ¼³Á¤
-        void Execute(); // °ø°İ ½ÇÇà
+        void SetProperties(float damage, Vector2? direction = null, float speed = 0f); // ê³µê²© ì†ë„ ë“± í•„ìš”í•œ ì†ì„± ì„¤ì •
+        void Execute(); // ê³µê²© ì‹¤í–‰
     }
 }

@@ -1,10 +1,10 @@
-/**********************************************************
+ï»¿/**********************************************************
  * Script Name: PlayerHealth
- * Author: ±è¿ì¼º
+ * Author: ê¹€ìš°ì„±
  * Date Created: 2025-05-01
  * Last Modified: 0000-00-00
  * Description: 
- * - ÇÃ·¹ÀÌ¾î Ä³¸¯ÅÍÀÇ HP »óÅÂ¿Í ÇÇ°İÀ» Ã³¸®ÇÏ´Â ½ºÅ©¸³Æ®
+ * - í”Œë ˆì´ì–´ ìºë¦­í„°ì˜ HP ìƒíƒœì™€ í”¼ê²©ì„ ì²˜ë¦¬í•˜ëŠ” ìŠ¤í¬ë¦½íŠ¸
  *********************************************************/
 
 using UnityEngine;
@@ -25,7 +25,7 @@ public class PlayerHealth : MonoBehaviour
         Debug.Log($"Player Health: {_currentHealth}");
         if (_currentHealth <= 0)
         {
-            // °ÔÀÓ ¿À¹ö ·ÎÁ÷
+            // ê²Œì„ ì˜¤ë²„ ë¡œì§
             Debug.Log("Player Dead");
             //Destroy(gameObject);
         }

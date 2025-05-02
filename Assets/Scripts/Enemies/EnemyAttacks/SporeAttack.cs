@@ -1,10 +1,10 @@
-/**********************************************************
+ï»¿/**********************************************************
  * Script Name: SporeAttack
- * Author: ±è¿ì¼º
+ * Author: ê¹€ìš°ì„±
  * Date Created: 2025-05-01
  * Last Modified: 0000-00-00
  * Description: 
- * - ½Ä¹° ¸ó½ºÅÍ Áß, Æ÷ÀÚ °ø°İ ±â´É
+ * - ì‹ë¬¼ ëª¬ìŠ¤í„° ì¤‘, í¬ì ê³µê²© ê¸°ëŠ¥
  *********************************************************/
 
 using EnemyAttack;
@@ -26,7 +26,7 @@ public class SporeAttack : MonoBehaviour, IEnemyAttack
 
     public void Execute()
     {
-        // ÇÊ¿ä ½Ã Ãß°¡ ·ÎÁ÷ ÀÛ¼º
+        // í•„ìš” ì‹œ ì¶”ê°€ ë¡œì§ ì‘ì„±
     }
 
     private void Update()
@@ -50,6 +50,6 @@ public class SporeAttack : MonoBehaviour, IEnemyAttack
 
     private void Start()
     {
-        Destroy(gameObject, 5f); // 5ÃÊ ÈÄ Á¦°Å
+        Destroy(gameObject, 5f); // 5ì´ˆ í›„ ì œê±°
     }
 }

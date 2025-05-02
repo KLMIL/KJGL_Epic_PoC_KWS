@@ -1,10 +1,10 @@
-/**********************************************************
+ï»¿/**********************************************************
  * Script Name: EnemyPotato
- * Author: ±è¿ì¼º
+ * Author: ê¹€ìš°ì„±
  * Date Created: 2025-05-01
  * Last Modified: 0000-00-00
  * Description: 
- * - ½Ä¹° ¸ó½ºÅÍ Áß, »Ñ¸® °ø°İÀ» ÇÏ´Â Potato
+ * - ì‹ë¬¼ ëª¬ìŠ¤í„° ì¤‘, ë¿Œë¦¬ ê³µê²©ì„ í•˜ëŠ” Potato
  *********************************************************/
 
 using EnemyAttack;
@@ -12,21 +12,21 @@ using UnityEngine;
 
 public class EnemyPotato : EnemyBase
 {
-    [SerializeField] GameObject _rootPrefab; // »Ñ¸® °ø°İ ÇÁ¸®Æé
-    [SerializeField] float _rootSpawnOffset = 0.5f; // »Ñ¸® ½ºÆù À§Ä¡ ÇÁ¸®¼Â
-    [SerializeField] float _rootDamage = 10f; // »Ñ¸® °ø°İ ´ë¹ÌÁö
+    [SerializeField] GameObject _rootPrefab; // ë¿Œë¦¬ ê³µê²© í”„ë¦¬í©
+    [SerializeField] float _rootSpawnOffset = 0.5f; // ë¿Œë¦¬ ìŠ¤í° ìœ„ì¹˜ í”„ë¦¬ì…‹
+    [SerializeField] float _rootDamage = 10f; // ë¿Œë¦¬ ê³µê²© ëŒ€ë¯¸ì§€
 
     protected override void Attack()
     {
         if (playerTransform == null) return;
 
-        // ÇÃ·¹ÀÌ¾î À§Ä¡ ¾Æ·¡¿¡ »Ñ¸® ½ºÆù
+        // í”Œë ˆì´ì–´ ìœ„ì¹˜ ì•„ë˜ì— ë¿Œë¦¬ ìŠ¤í°
         Vector2 spawnPos = (Vector2)playerTransform.position + Vector2.down * _rootSpawnOffset;
 
-        // Instantiate´Â Vector3¸¦ ¿ä±¸ÇÏ¹Ç·Î, z = 0À¸·Î º¯È¯
+        // InstantiateëŠ” Vector3ë¥¼ ìš”êµ¬í•˜ë¯€ë¡œ, z = 0ìœ¼ë¡œ ë³€í™˜
         GameObject root = Instantiate(_rootPrefab, new Vector3(spawnPos.x, spawnPos.y, 0), Quaternion.identity);
 
-        // IEnemyAttack ÀÎÅÍÆäÀÌ½º·Î ¼³Á¤
+        // IEnemyAttack ì¸í„°í˜ì´ìŠ¤ë¡œ ì„¤ì •
         IEnemyAttack rootAttack = root.GetComponent<IEnemyAttack>();
         if (rootAttack != null)
         {

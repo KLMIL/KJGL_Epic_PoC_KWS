@@ -1,10 +1,10 @@
-/**********************************************************
+ï»¿/**********************************************************
  * Script Name: EnemyManager
- * Author: ±è¿ì¼º
+ * Author: ê¹€ìš°ì„±
  * Date Created: 2025-05-01
  * Last Modified: 0000-00-00
  * Description: 
- * - ¸ğµç Àû °³Ã¼¸¦ °ü¸®ÇÏ°í, ÀûÀÇ »ı¼º ¹× Á¦°Å Ã³¸®
+ * - ëª¨ë“  ì  ê°œì²´ë¥¼ ê´€ë¦¬í•˜ê³ , ì ì˜ ìƒì„± ë° ì œê±° ì²˜ë¦¬
  *********************************************************/
 
 using UnityEngine;
@@ -18,8 +18,8 @@ public class EnemyManager : MonoBehaviour
     public static EnemyManager Instance => _instance;
 
 
-    [SerializeField] GameObject PoC_potatoPrefab; // °¨ÀÚ ¸ó½ºÅÍ ÇÁ¸®Æé
-    [SerializeField] GameObject PoC_spinachPrefab; // ½Ã±İÄ¡ ¸ó½ºÅÍ ÇÁ¸®Æé
+    [SerializeField] GameObject PoC_potatoPrefab; // ê°ì ëª¬ìŠ¤í„° í”„ë¦¬í©
+    [SerializeField] GameObject PoC_spinachPrefab; // ì‹œê¸ˆì¹˜ ëª¬ìŠ¤í„° í”„ë¦¬í©
 
     List<EnemyBase> activeEnemies = new List<EnemyBase>();
 
