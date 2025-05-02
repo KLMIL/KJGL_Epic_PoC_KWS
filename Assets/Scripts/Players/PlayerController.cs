@@ -35,6 +35,7 @@ public class PlayerController : MonoBehaviour
     private void Start()
     {
         InitializeUIManager();
+        InitializeCamera();
     }
 
     private void AssignComponents()
@@ -51,6 +52,19 @@ public class PlayerController : MonoBehaviour
         {
             Debug.Log("UI Manager Initialization");
             _uiManager.Initialize(_weaponManager);
+        }
+    }
+
+    private void InitializeCamera()
+    {
+        CameraFollow cameraFollow = Camera.main.GetComponent<CameraFollow>();
+        if (cameraFollow != null)
+        {
+            cameraFollow.SetTarget(transform);
+        }
+        else
+        {
+            Debug.LogWarning("CameraFollow component not found on Main Camera");
         }
     }
 
