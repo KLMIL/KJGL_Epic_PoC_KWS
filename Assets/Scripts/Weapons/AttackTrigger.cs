@@ -16,9 +16,16 @@ public class AttackTrigger : MonoBehaviour
     HashSet<Collider2D> _hitEnemies = new HashSet<Collider2D>();
     Projectile _projectile;
 
+    public delegate void DamageEventHandler(string weaponName, int damage, string enemyName);
+    public static event DamageEventHandler OnDamageDealt;
+
+    string _weaponName; // 디버깅을 위한 무기 이름 저장
+
     private void Awake()
     {
         _projectile = GetComponent<Projectile>();
+        // 아마, 이렇게 하면 이름 못얻어올듯.
+        _weaponName = GetComponentInParent<IWeapon>()?.Name ?? "Unknown"; // 부모 개체에서 이름 얻기
     }
 
     public void SetDamage(int newDamage)
@@ -41,6 +48,8 @@ public class AttackTrigger : MonoBehaviour
             {
                 _projectile.HitEnemy();
             }
+
+            OnDamageDealt?.Invoke(_weaponName, _damage, collision.name);
         }
     }
 }
