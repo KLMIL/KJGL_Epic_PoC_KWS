@@ -2,7 +2,7 @@
  * Script Name: PlayerController
  * Author: 김우성
  * Date Created: 2025-04-30
- * Last Modified: 2025-05-01
+ * Last Modified: 2025-05-02
  * Description
  * - 플레이어 캐릭터의 동작과 입력 처리 담당
  *********************************************************/
@@ -12,11 +12,13 @@ using UnityEngine;
 // RequireComponent: 해당 컴포넌트가 필수임을 명시. 없다면 자동 추가
 [RequireComponent(typeof(PlayerInputHandler))] 
 [RequireComponent(typeof(WeaponManager))]
+[RequireComponent(typeof(InventoryManager))]
 public class PlayerController : MonoBehaviour
 {
     /* Components */ 
     PlayerInputHandler _inputHandler;
     WeaponManager _weaponManager;
+    InventoryManager _inventoryManager;
     Rigidbody2D _rb;
 
     UIManager _uiManager;
@@ -25,6 +27,12 @@ public class PlayerController : MonoBehaviour
     /* Status */
     [Header("Movement")]
     [SerializeField] float _moveSpeed = 5f;
+
+    [Header("Test Items")]
+    [SerializeField] Item _itemSoysauce;
+    [SerializeField] Item _itemSalt;
+    [SerializeField] Item _itemSpinachNormal;
+    [SerializeField] Item _itemPotatoNormal;
 
 
     private void Awake()
@@ -36,12 +44,14 @@ public class PlayerController : MonoBehaviour
     {
         InitializeUIManager();
         InitializeCamera();
+        InitializeInventory();
     }
 
     private void AssignComponents()
     {
         _inputHandler = GetComponent<PlayerInputHandler>();
         _weaponManager = GetComponent<WeaponManager>();
+        _inventoryManager = GetComponent<InventoryManager>();
         _rb = GetComponent<Rigidbody2D>();
     }
 
@@ -66,6 +76,14 @@ public class PlayerController : MonoBehaviour
         {
             Debug.LogWarning("CameraFollow component not found on Main Camera");
         }
+    }
+
+    private void InitializeInventory()
+    {
+        if (_itemSoysauce != null) _inventoryManager.AddItem(_itemSoysauce, 10);
+        if (_itemSalt != null) _inventoryManager.AddItem(_itemSalt, 5);
+        if (_itemPotatoNormal != null) _inventoryManager.AddItem(_itemPotatoNormal, 1);
+        if (_itemSpinachNormal != null) _inventoryManager.AddItem(_itemSpinachNormal, 1);
     }
 
 
@@ -100,6 +118,7 @@ public class PlayerController : MonoBehaviour
         {
             Debug.Log("Attack!");
             _weaponManager.Attack();
+            _uiManager?.UpdateWeaponUI();
             _inputHandler.ConsumeAttack(); // 공격 입력 소비
         }
     }

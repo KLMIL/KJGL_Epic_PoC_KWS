@@ -14,4 +14,10 @@ namespace Enums
         Potato = 0,
         Spinach
     }
+
+    public enum ItemType
+    {
+        Seasoning = 0,
+        Ingredient
+    }
 }

@@ -13,8 +13,8 @@ GameObject:
   - component: {fileID: 4733549367256313112}
   - component: {fileID: 2729439552950662832}
   - component: {fileID: 3161581277985896354}
-  - component: {fileID: 5209484598134051563}
   - component: {fileID: 4352467620915609844}
+  - component: {fileID: 7165890457577409506}
   - component: {fileID: 4591496356852349386}
   - component: {fileID: 2151935814066967127}
   m_Layer: 0
@@ -69,7 +69,7 @@ MonoBehaviour:
   - {fileID: 4252961594571263045, guid: 15963d70b00b3ad4f9311b69a72948d9, type: 3}
   - {fileID: 1328724433901099581, guid: 2eaced0609cfaa3448c346fe45165d55, type: 3}
   - {fileID: 4156394797502180825, guid: cd974c113c8e5d342acdb1681fd311c2, type: 3}
-  _playerHandTransform: {fileID: 0}
+  _playerHandTransform: {fileID: 3251316697049958236}
 --- !u!114 &2729439552950662832
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -96,20 +96,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _maxHealth: 100
---- !u!114 &5209484598134051563
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 867406396376275092}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9547998daedb1674ca5137335e1ecd3f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _weaponPrefabs: []
-  _playerHandTransform: {fileID: 0}
 --- !u!114 &4352467620915609844
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -122,6 +108,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bc1d503bd68bb514c92b805169e3c9a0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &7165890457577409506
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 867406396376275092}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 11ef4b81e2c4760459e16556de61c005, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _maxSlotsPerTab: 10
+  _seasoningSlots: []
+  _ingredientSlots: []
 --- !u!50 &4591496356852349386
 Rigidbody2D:
   serializedVersion: 5
@@ -148,7 +149,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 0
+  m_Constraints: 4
 --- !u!58 &2151935814066967127
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -297,7 +298,7 @@ Transform:
   m_GameObject: {fileID: 6710481908019890998}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.7, z: 0}
+  m_LocalPosition: {x: 0.7, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
