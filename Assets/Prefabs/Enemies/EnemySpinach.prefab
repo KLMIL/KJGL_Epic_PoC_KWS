@@ -11,10 +11,11 @@ GameObject:
   - component: {fileID: 4377350779001367882}
   - component: {fileID: 1528690490770159179}
   - component: {fileID: 3381605077620931276}
+  - component: {fileID: 4038410038417045415}
   - component: {fileID: 7794505194906381261}
   m_Layer: 0
   m_Name: EnemySpinach
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -107,6 +108,19 @@ MonoBehaviour:
   _sporeSpeed: 5
   _sporeDamage: 5
   _sporeCount: 8
+--- !u!114 &4038410038417045415
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3625136681811785365}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 053154cec1086f848b84676db96d335d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _maxHealth: 100
 --- !u!61 &7794505194906381261
 BoxCollider2D:
   m_ObjectHideFlags: 0

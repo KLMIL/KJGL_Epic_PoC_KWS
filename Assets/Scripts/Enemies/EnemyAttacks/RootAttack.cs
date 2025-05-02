@@ -30,7 +30,7 @@ namespace EnemyAttack
         {
             if (collision.CompareTag("Player"))
             {
-                PlayerHealth playerHealth = collision.GetComponent<PlayerHealth>();
+                Health playerHealth = collision.GetComponent<Health>();
                 if (playerHealth != null)
                 {
                     playerHealth.TakeDamage(_damage);

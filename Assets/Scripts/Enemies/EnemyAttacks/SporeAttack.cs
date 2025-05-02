@@ -38,7 +38,7 @@ public class SporeAttack : MonoBehaviour, IEnemyAttack
     {
         if (collision.CompareTag("Player"))
         {
-            PlayerHealth playerHealth = collision.GetComponent<PlayerHealth>();
+            Health playerHealth = collision.GetComponent<Health>();
             if (playerHealth != null)
             {
                 Debug.Log($"SporeAttack hit Player, dealing {_damage} damage");

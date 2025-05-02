@@ -11,16 +11,43 @@ using UnityEngine;
 
 public class WeaponSoysauce : MonoBehaviour, IWeapon
 {
+    /* Interface Status */
     public string Name => "Soysauce";
     public bool HasAmmo => true;
     public int Ammo => _ammo;
-    
+
     int _ammo = 10; // 초기 잔탄수
+
+    /* Attack Status */
+    [SerializeField] Transform _attackPoint;
+    [SerializeField] GameObject _attackPrefab; // SoysauceAttack.prefab
+    [SerializeField] float _attackRange = 0.5f; // 발사체 크기
+    [SerializeField] int _damage = 8;
 
 
     public void Attack()
     {
+        if (_ammo <= 0)
+        {
+            Debug.Log("No ammo!");
+            return;
+        }
+        _ammo--;
+
+        GameObject attackInstance = Instantiate(_attackPrefab, _attackPoint.position, _attackPoint.rotation);
+        attackInstance.transform.localScale = new Vector3(_attackRange, _attackRange, 1f);
+        AttackTrigger attackTrigger = attackInstance.GetComponent<AttackTrigger>();
+        if (attackTrigger != null)
+        {
+            attackTrigger.SetDamage(_damage);
+        }
+        Projectile projectile = attackInstance.GetComponent<Projectile>();
+        if (projectile != null)
+        {
+            Vector2 direction = transform.right;
+            projectile.Initialize(direction);
+        }
+
         Debug.Log("Soysauce: Throwing a soysauce");
-        // PoC: 실제 구현은 투사체 프리펩 생성 및 발사
     }
 }
