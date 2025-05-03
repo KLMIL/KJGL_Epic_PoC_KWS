@@ -21,7 +21,7 @@ public class SporeAttack : MonoBehaviour, IEnemyAttack
         _damage = damage;
         _direction = direction ?? Vector2.zero;
         _speed = speed;
-        Debug.Log($"SporeAttack initialized with damage: {_damage}, direction: {_direction}, speed: {_speed}");
+        //Debug.Log($"SporeAttack initialized with damage: {_damage}, direction: {_direction}, speed: {_speed}");
     }
 
     public void Execute()

@@ -11,6 +11,7 @@ using System;
 using System.Collections.Generic;
 using UnityEngine;
 using Enums;
+using System.Linq;
 
 [System.Serializable]
 public class InventorySlot
@@ -35,23 +36,14 @@ public class InventoryManager : MonoBehaviour
 
     public bool AddItem(Item item, int quantity = 1)
     {
-        List<InventorySlot> targetSlots = null;
-
-        switch (item.type)
+        List<InventorySlot> targetSlots = item.type switch
         {
-            case ItemType.Seasoning:
-                targetSlots = _seasoningSlots;
-                break;
-            case ItemType.Ingredient:
-                targetSlots = _ingredientSlots;
-                break;
-            case ItemType.Cooking:
-                targetSlots = _cookingSlots;
-                break;
-            default:
-                Debug.Log("Item type error");
-                break;
-        }
+            ItemType.Seasoning => _seasoningSlots,
+            ItemType.Ingredient => _ingredientSlots,
+            ItemType.Cooking => _cookingSlots,
+            _ => throw new System.ArgumentException("Invalid ItemType")
+        };
+        Debug.Log($"Adding {item.ItemName} x{quantity} to {item.type} tab");
 
         // 기존 슬롯에 추가
         foreach (InventorySlot slot in targetSlots)
@@ -61,6 +53,7 @@ public class InventoryManager : MonoBehaviour
                 int space = item.MaxStackSize - slot.Quantity;
                 int addQuantity = Mathf.Min(quantity, space);
                 slot.Quantity += addQuantity;
+                quantity -= addQuantity;
                 OnInventoryChanged?.Invoke();
                 return quantity == 0;
             }
@@ -99,6 +92,14 @@ public class InventoryManager : MonoBehaviour
 
     public List<InventorySlot> GetSlots(ItemType type)
     {
-        return type == ItemType.Seasoning ? _seasoningSlots : _ingredientSlots;
+        List<InventorySlot> slots = type switch
+        {
+            ItemType.Seasoning => _seasoningSlots,
+            ItemType.Ingredient => _ingredientSlots,
+            ItemType.Cooking => _cookingSlots,
+            _ => throw new System.ArgumentException("Invalid ItemType")
+        };
+        Debug.Log($"Returning {slots.Count} slots for {type}: {string.Join(", ", slots.Select(s => $"{s.Item.ItemName} x{s.Quantity}"))}");
+        return slots;
     }
 }

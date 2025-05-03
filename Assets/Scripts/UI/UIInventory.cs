@@ -2,7 +2,7 @@
  * Script Name: UIInventory
  * Author: 김우성
  * Date Created: 2025-05-02
- * Last Modified: 0000-00-00
+ * Last Modified: 2025-05-03
  * Description
  * - 인벤토리 UI, 조미료/식재료 탭 및 슬롯 표시
  *********************************************************/
@@ -38,11 +38,12 @@ public class UIInventory : MonoBehaviour
         {
             Debug.LogError("InventoryManager not found");
         }
-        _inventoryPanel.SetActive(false);
 
         _seasoningTabButton.onClick.AddListener(() => SetTab(ItemType.Seasoning));
         _ingredientTabButton.onClick.AddListener(() => SetTab(ItemType.Ingredient));
         _cookingTabButton.onClick.AddListener(() => SetTab(ItemType.Cooking));
+
+        _inventoryPanel.SetActive(false);
     }
 
     private void OnEnable()

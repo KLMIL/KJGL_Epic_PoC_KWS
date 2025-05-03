@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 3161581277985896354}
   - component: {fileID: 4352467620915609844}
   - component: {fileID: 7165890457577409506}
+  - component: {fileID: 7417947754110461805}
   - component: {fileID: 4591496356852349386}
   - component: {fileID: 2151935814066967127}
   m_Layer: 0
@@ -83,6 +84,23 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _moveSpeed: 5
+  _seasoningItems:
+  - {fileID: 11400000, guid: f8b586306f8dcfb40a1653968fb91ab2, type: 2}
+  - {fileID: 11400000, guid: 0b6b2eb6a148c004d95a9999ee2f483c, type: 2}
+  _ingredientItems:
+  - {fileID: 11400000, guid: a79925842fde5ac409d4589511589226, type: 2}
+  - {fileID: 11400000, guid: 2e99a70848d13c843803c3a706c42a1c, type: 2}
+  - {fileID: 11400000, guid: 9ffcc1ea2bdbb4647a20c6ed83139744, type: 2}
+  - {fileID: 11400000, guid: 459242c38c94b5a44bfd1490b778d638, type: 2}
+  - {fileID: 11400000, guid: 42815891a1a6ad84895523034df2176e, type: 2}
+  - {fileID: 11400000, guid: cc3b9ea1941e2b94cb7d98b4888c084b, type: 2}
+  _cookingItems:
+  - {fileID: 11400000, guid: d2693150b36390941b4926cb1672a265, type: 2}
+  - {fileID: 11400000, guid: 5922d79514d370f4d99c8150abd9c13b, type: 2}
+  - {fileID: 11400000, guid: 7e45d828e91f8164a9bfdc57aa2c809f, type: 2}
+  - {fileID: 11400000, guid: 0447d651a0bfd104b91f7cd044472488, type: 2}
+  - {fileID: 11400000, guid: 193627db927aa2e489bf72317a7f3235, type: 2}
+  - {fileID: 11400000, guid: c6ea14505b032ee4295f3bf9a51a33d9, type: 2}
 --- !u!114 &3161581277985896354
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -123,6 +141,22 @@ MonoBehaviour:
   _maxSlotsPerTab: 10
   _seasoningSlots: []
   _ingredientSlots: []
+  _cookingSlots: []
+--- !u!114 &7417947754110461805
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 867406396376275092}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4380468f6dd51fc49b6599d2d151a778, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _inventoryManager: {fileID: 0}
+  _cookingPanel: {fileID: 0}
+  _toggleKey: 116
 --- !u!50 &4591496356852349386
 Rigidbody2D:
   serializedVersion: 5
