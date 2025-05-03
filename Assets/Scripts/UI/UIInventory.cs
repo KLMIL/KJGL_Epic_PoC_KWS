@@ -17,10 +17,14 @@ using UnityEngine.UI;
 public class UIInventory : MonoBehaviour
 {
     [SerializeField] GameObject _inventoryPanel; // 인벤토리 패널
+
     [SerializeField] Button _seasoningTabButton; // 조미료 탭 버튼
     [SerializeField] Button _ingredientTabButton; // 식재료 탭 버튼
+    [SerializeField] Button _cookingTabButton; // 음식 탭 버튼 
+
     [SerializeField] Transform _slotContainer; // 슬롯 그리드
     [SerializeField] GameObject _slotPrefab; // 슬롯 프리팹
+
     [SerializeField] KeyCode _toggleKey = KeyCode.Tab; // 인벤토리 토글 키
 
     InventoryManager _inventoryManager;
@@ -38,6 +42,7 @@ public class UIInventory : MonoBehaviour
 
         _seasoningTabButton.onClick.AddListener(() => SetTab(ItemType.Seasoning));
         _ingredientTabButton.onClick.AddListener(() => SetTab(ItemType.Ingredient));
+        _cookingTabButton.onClick.AddListener(() => SetTab(ItemType.Cooking));
     }
 
     private void OnEnable()

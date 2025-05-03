@@ -7,6 +7,9 @@
  * - 플레이어 캐릭터의 동작과 입력 처리 담당
  *********************************************************/
 
+using NUnit.Framework;
+using System.Collections.Generic;
+using UnityEditor.Rendering.Universal;
 using UnityEngine;
 
 // RequireComponent: 해당 컴포넌트가 필수임을 명시. 없다면 자동 추가
@@ -29,10 +32,9 @@ public class PlayerController : MonoBehaviour
     [SerializeField] float _moveSpeed = 5f;
 
     [Header("Test Items")]
-    [SerializeField] Item _itemSoysauce;
-    [SerializeField] Item _itemSalt;
-    [SerializeField] Item _itemSpinachNormal;
-    [SerializeField] Item _itemPotatoNormal;
+    [SerializeField] List<Item> _seasoningItems = new List<Item>();
+    [SerializeField] List<Item> _ingredientItems = new List<Item>();
+    [SerializeField] List<Item> _cookingItems = new List<Item>();
 
 
     private void Awake()
@@ -80,10 +82,21 @@ public class PlayerController : MonoBehaviour
 
     private void InitializeInventory()
     {
-        if (_itemSoysauce != null) _inventoryManager.AddItem(_itemSoysauce, 10);
-        if (_itemSalt != null) _inventoryManager.AddItem(_itemSalt, 5);
-        if (_itemPotatoNormal != null) _inventoryManager.AddItem(_itemPotatoNormal, 1);
-        if (_itemSpinachNormal != null) _inventoryManager.AddItem(_itemSpinachNormal, 1);
+        // 인벤토리에 기본 아이템 추가
+        foreach (var item in _seasoningItems)
+        {
+            if (item != null) _inventoryManager.AddItem(item, 10);
+        }
+
+        foreach (var item in _ingredientItems)
+        {
+            if (item != null) _inventoryManager.AddItem(item, 10);
+        }
+
+        foreach (var item in _cookingItems)
+        {
+            if (item != null) _inventoryManager.AddItem(item, 10);
+        }
     }
 
 

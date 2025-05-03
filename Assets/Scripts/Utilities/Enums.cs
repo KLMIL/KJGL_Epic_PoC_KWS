@@ -18,6 +18,7 @@ namespace Enums
     public enum ItemType
     {
         Seasoning = 0,
-        Ingredient
+        Ingredient,
+        Cooking
     }
 }

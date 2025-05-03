@@ -10,8 +10,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 478fe708a32a6b94a8f8b6bff43411e9, type: 3}
-  m_Name: PotatoNormal
+  m_Name: IngPotatoKnife
   m_EditorClassIdentifier: 
-  ItemName: PotatoNormal
+  ItemName: IngPotatoKnife
   type: 1
   MaxStackSize: 99

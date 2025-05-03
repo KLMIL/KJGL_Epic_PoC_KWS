@@ -29,12 +29,29 @@ public class InventoryManager : MonoBehaviour
     [SerializeField] int _maxSlotsPerTab = 10; // 탭당 최대 슬롯 수
     [SerializeField] List<InventorySlot> _seasoningSlots = new List<InventorySlot>();
     [SerializeField] List<InventorySlot> _ingredientSlots = new List<InventorySlot>();
+    [SerializeField] List<InventorySlot> _cookingSlots = new List<InventorySlot>();
 
     public event Action OnInventoryChanged; // 인벤토리 변경 이벤트
 
     public bool AddItem(Item item, int quantity = 1)
     {
-        List<InventorySlot> targetSlots = item.type == ItemType.Seasoning ? _seasoningSlots : _ingredientSlots;
+        List<InventorySlot> targetSlots = null;
+
+        switch (item.type)
+        {
+            case ItemType.Seasoning:
+                targetSlots = _seasoningSlots;
+                break;
+            case ItemType.Ingredient:
+                targetSlots = _ingredientSlots;
+                break;
+            case ItemType.Cooking:
+                targetSlots = _cookingSlots;
+                break;
+            default:
+                Debug.Log("Item type error");
+                break;
+        }
 
         // 기존 슬롯에 추가
         foreach (InventorySlot slot in targetSlots)

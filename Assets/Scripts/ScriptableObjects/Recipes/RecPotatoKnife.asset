@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5eb1020f992d3804fa67b9074a92fda2, type: 3}
+  m_Name: RecPotatoKnife
+  m_EditorClassIdentifier: 
+  RecipeName: RecPotatoKnife
+  Output: {fileID: 11400000, guid: d2693150b36390941b4926cb1672a265, type: 2}
+  RequiredIngredient: {fileID: 11400000, guid: a79925842fde5ac409d4589511589226, type: 2}
+  IngredientQuantity: 1
+  RequiredSeasoning: {fileID: 0}
+  SeasoningQuantity: 0
