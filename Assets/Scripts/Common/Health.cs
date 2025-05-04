@@ -2,17 +2,20 @@
  * Script Name: Health
  * Author: 김우성
  * Date Created: 2025-05-01
- * Last Modified: 2025-05-02
+ * Last Modified: 2025-05-04
  * Description: 
  * - 캐릭터의 HP 상태와 피격을 처리하는 스크립트
  *********************************************************/
 
 using UnityEngine;
+using UnityEngine.Events;
 
 public class Health : MonoBehaviour
 {
     [SerializeField] float _maxHealth = 100f;
     float _currentHealth;
+
+    public UnityEvent OnDeath; // 사망시 호출할 이벤트
 
     private void Awake()
     {
@@ -27,7 +30,7 @@ public class Health : MonoBehaviour
         {
             // 게임 오버 로직
             Debug.Log($"{gameObject.name} Dead");
-            //Destroy(gameObject);
+            OnDeath.Invoke();
         }
     }
 }
