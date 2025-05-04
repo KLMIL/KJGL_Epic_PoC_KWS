@@ -1,18 +1,18 @@
-/**********************************************************
+ï»¿/**********************************************************
  * Script Name: ItemDrop
- * Author: ±è¿ì¼º
+ * Author: ê¹€ìš°ì„±
  * Date Created: 2025-05-04
  * Last Modified: 2025-05-04
  * Description: 
- * - ¸ó½ºÅÍ »ç¸Á ½Ã ¾ÆÀÌÅÛ µå·Ó Ã³¸®
- * - Health.onDeath ÀÌº¥Æ®·Î Æ®¸®°Å
+ * - ëª¬ìŠ¤í„° ì‚¬ë§ ì‹œ ì•„ì´í…œ ë“œë¡­ ì²˜ë¦¬
+ * - Health.onDeath ì´ë²¤íŠ¸ë¡œ íŠ¸ë¦¬ê±°
  *********************************************************/
 
 using UnityEngine;
 
 public class ItemDrop : MonoBehaviour
 {
-    [SerializeField] Item[] _possibleDrops; // µå·Ó °¡´ÉÇÑ ¾ÆÀÌÅÛ ¸ñ·Ï
+    [SerializeField] Item[] _possibleDrops; // ë“œë¡­ ê°€ëŠ¥í•œ ì•„ì´í…œ ëª©ë¡
     UILogManager _logManager;
 
     private void Awake()
@@ -36,11 +36,11 @@ public class ItemDrop : MonoBehaviour
     }
 
     // 2025-05-04 KWS - DEPRECATED
-    // ·ÎÁ÷ ¼öÁ¤À» À§ÇØ ÆÄ¶ó¹ÌÅÍ º¯°æ ÈÄ DEP
+    // ë¡œì§ ìˆ˜ì •ì„ ìœ„í•´ íŒŒë¼ë¯¸í„° ë³€ê²½ í›„ DEP
     //private void DropItem()
     //{
-    //    // µå¶ø ¾ÆÀÌÅÛ ·ÎÁ÷ ÀÛ¼ºÇØ¾ßÇÔ.
-    //    // ¿©±â¼­ ¹«±â¿¡ µû¶ó ´Ù¸¥ Àç·á µå¶øÇØ¾ß.
+    //    // ë“œë ì•„ì´í…œ ë¡œì§ ì‘ì„±í•´ì•¼í•¨.
+    //    // ì—¬ê¸°ì„œ ë¬´ê¸°ì— ë”°ë¼ ë‹¤ë¥¸ ì¬ë£Œ ë“œëí•´ì•¼.
     //    foreach (Item item in _possibleDrops)
     //    {
     //        _logManager.AddLog($"Dropped {item.ItemName}");
@@ -53,11 +53,11 @@ public class ItemDrop : MonoBehaviour
         {
             if (string.IsNullOrEmpty(item.RequiredWeapon) || item.RequiredWeapon == topWeapon)
             {
-                if (Random.value <= item.DropChange)
+                if (Random.value <= item.DropChance)
                 {
-                    // ¾ÆÀÌÅÛ ÀÎº¥Åä¸®¿¡ Ãß°¡ÇÏ´Â ÇÔ¼ö ÇÊ¿ä
+                    // ì•„ì´í…œ ì¸ë²¤í† ë¦¬ì— ì¶”ê°€í•˜ëŠ” í•¨ìˆ˜ í•„ìš”
                     _logManager?.AddLog($"Dropped {item.ItemName}");
-                    //break; // ÇÏ³ª¸¸ µå¶øÇÒ°Å¸é break
+                    //break; // í•˜ë‚˜ë§Œ ë“œëí• ê±°ë©´ break
                 }
             }
         }

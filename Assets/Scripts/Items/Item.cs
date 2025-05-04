@@ -18,6 +18,6 @@ public class Item : ScriptableObject
     public ItemType type;
     public int MaxStackSize = 99;
 
-    public float DropChange = 1.0f; // 드롭 확률, 0 ~ 1. 테스트를 위해 100%
+    public float DropChance = 1.0f; // 드롭 확률, 0 ~ 1. 테스트를 위해 100%
     public string RequiredWeapon; // 이 무기로 죽였을 때 드롭. 빈 문자열 = 모든 무기
 }

@@ -21,7 +21,7 @@ public class EnemyManager : MonoBehaviour
     [SerializeField] GameObject PoC_potatoPrefab; // 감자 몬스터 프리펩
     [SerializeField] GameObject PoC_spinachPrefab; // 시금치 몬스터 프리펩
 
-    List<EnemyBase> activeEnemies = new List<EnemyBase>();
+    List<EnemyBase> _activeEnemies = new List<EnemyBase>();
 
 
     private void Awake()
@@ -57,20 +57,20 @@ public class EnemyManager : MonoBehaviour
 
         GameObject enemyObj = Instantiate(enemyPrefab, position, Quaternion.identity);
         EnemyBase enemy = enemyObj.GetComponent<EnemyBase>();
-        activeEnemies.Add(enemy);
+        _activeEnemies.Add(enemy);
     }
 
     public void RemoveEnemy(EnemyBase enemy)
     {
-        activeEnemies.Remove(enemy);
+        _activeEnemies.Remove(enemy);
     }
 
     public void ClearAllEnemies()
     {
-        foreach (var enemy in activeEnemies)
+        foreach (var enemy in _activeEnemies)
         {
             Destroy(enemy.gameObject);
         }
-        activeEnemies.Clear();
+        _activeEnemies.Clear();
     }
 }

@@ -20,7 +20,7 @@ public class Health : MonoBehaviour
     Dictionary<string, float> _damageByWeapon = new Dictionary<string, float>();
     public UnityEvent<string, float> OnDeathWithTopWeapon; // 사망시 최대 피해 대미지 무기 전달
 
-    public UnityEvent OnDeath; // 사망시 호출할 이벤트
+    //public UnityEvent OnDeath; // 사망시 호출할 이벤트
 
     private void Awake()
     {

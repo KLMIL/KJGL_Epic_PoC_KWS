@@ -1,5 +1,5 @@
 ﻿/**********************************************************
- * Script Name: PoC_TestSpawner
+ * Script Name: TEST_EnemySpawner
  * Author: 김우성
  * Date Created: 2025-05-01
  * Last Modified: 2025-05-04
@@ -12,7 +12,7 @@ using UnityEngine;
 using Enums;
 using UnityEngine.UI;
 
-public class PoC_TestSpawner : MonoBehaviour
+public class TEST_EnemySpawner : MonoBehaviour
 {
     [SerializeField] Button _potatoSpawnButton;
     [SerializeField] Button _spinachSpawnButton;
