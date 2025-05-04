@@ -2,7 +2,7 @@
  * Script Name: RootAttack
  * Author: 김우성
  * Date Created: 2025-05-01
- * Last Modified: 0000-00-00
+ * Last Modified: 2025-05-04
  * Description: 
  * - 식물 몬스터의 뿌리 공격 기능 구현
  *********************************************************/
@@ -33,7 +33,9 @@ namespace EnemyAttack
                 Health playerHealth = collision.GetComponent<Health>();
                 if (playerHealth != null)
                 {
-                    playerHealth.TakeDamage(_damage);
+                    // 2025-05-04 KWS
+                    // TakeDamage 함수 수정을 위해 임시 문자열 삽입
+                    playerHealth.TakeDamage(_damage, "Unknown");
                 }
                 Destroy(gameObject);
             }

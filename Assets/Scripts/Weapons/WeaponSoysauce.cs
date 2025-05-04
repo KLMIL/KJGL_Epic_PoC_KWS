@@ -2,7 +2,7 @@
  * Script Name: WeaponSoysauce
  * Author: 김우성
  * Date Created: 2025-05-01
- * Last Modified: 0000-00-00
+ * Last Modified: 2025-05-04
  * Description
  * - 플레이어의 무기 중, 원거리 단일 공격 무기인 "Soysauce"
  *********************************************************/
@@ -40,6 +40,9 @@ public class WeaponSoysauce : MonoBehaviour, IWeapon
         if (attackTrigger != null)
         {
             attackTrigger.SetDamage(_damage);
+            // 2025-05-04 KWS - 추가
+            // attackTrigger에 무기 이름 전달
+            attackTrigger.SetWeaponName(Name);
         }
         Projectile projectile = attackInstance.GetComponent<Projectile>();
         if (projectile != null)

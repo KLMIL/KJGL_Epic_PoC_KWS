@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 5857448757118995510}
   - component: {fileID: 234436631890319610}
   - component: {fileID: 2035811348858051833}
+  - component: {fileID: 5985692735787063338}
   - component: {fileID: 2249090389839512348}
   m_Layer: 0
   m_Name: EnemyPotato
@@ -102,7 +103,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2b928d7de215b3c48a4d1460def93ef9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _maxHealth: 100
   _attackCooldown: 2
   _rootPrefab: {fileID: 8204073840677830455, guid: 67cc989b66528aa4cabed8afd244a0a8, type: 3}
   _rootSpawnOffset: 0.5
@@ -120,6 +120,28 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _maxHealth: 100
+  OnDeathWithTopWeapon:
+    m_PersistentCalls:
+      m_Calls: []
+  OnDeath:
+    m_PersistentCalls:
+      m_Calls: []
+--- !u!114 &5985692735787063338
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4201355418962633632}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ac66f0117a0389c4484e62800d493fea, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _possibleDrops:
+  - {fileID: 11400000, guid: a79925842fde5ac409d4589511589226, type: 2}
+  - {fileID: 11400000, guid: 2e99a70848d13c843803c3a706c42a1c, type: 2}
+  - {fileID: 11400000, guid: 9ffcc1ea2bdbb4647a20c6ed83139744, type: 2}
 --- !u!58 &2249090389839512348
 CircleCollider2D:
   m_ObjectHideFlags: 0

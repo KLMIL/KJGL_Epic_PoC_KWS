@@ -15,3 +15,5 @@ MonoBehaviour:
   ItemName: IngSpinachSoysauce
   type: 1
   MaxStackSize: 99
+  DropChange: 1
+  RequiredWeapon: Soysauce

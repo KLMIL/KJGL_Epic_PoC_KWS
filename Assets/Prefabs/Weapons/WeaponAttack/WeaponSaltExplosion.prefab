@@ -141,7 +141,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _duration: 0.5
   _damage: 5
-  _radius: 2
+  _radius: 0.5
   _continuousDamage: 0
 --- !u!114 &-4875965931704937894
 MonoBehaviour:

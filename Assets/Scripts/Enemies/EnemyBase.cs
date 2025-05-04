@@ -25,6 +25,8 @@ public abstract class EnemyBase : MonoBehaviour
 
     protected Health _health;
 
+    protected UILogManager _logManager;
+
 
     protected virtual void Awake()
     {
@@ -39,7 +41,14 @@ public abstract class EnemyBase : MonoBehaviour
         }
         else
         {
-            _health.OnDeath.AddListener(Die);
+            //_health.OnDeath.AddListener(Die);
+            _health.OnDeathWithTopWeapon.AddListener(Die);
+        }
+
+        _logManager = FindObjectOfType<UILogManager>();
+        if (_logManager == null)
+        {
+            Debug.LogError("UILogManager not found in scene");
         }
     }
 
@@ -52,7 +61,7 @@ public abstract class EnemyBase : MonoBehaviour
             _lastAttackTime = Time.time;
         }
     }
-    
+
     // 2025-05-04 KWS
     // DEPRECATED
     // Health.cs에서 TakeDamage 정의
@@ -65,10 +74,22 @@ public abstract class EnemyBase : MonoBehaviour
     //    }
     //}
 
-    protected virtual void Die()
+    // 2025-05-04 KWS
+    // DEPRECATED
+    // 무기 정보 전달을 위해 변경
+    //protected virtual void Die()
+    //{
+    //    Debug.Log($"{gameObject.name} Die");
+    //    EnemyManager.Instance.RemoveEnemy(this);
+    //    Destroy(gameObject);
+    //}
+
+    protected virtual void Die(string topWeapon, float topDamage)
     {
-        Debug.Log($"{gameObject.name} Die");
+        _logManager?.AddLog($"<color=red>{gameObject.name} Dead, Top Damage: {topWeapon} ({topDamage} damage</color>");
+        Debug.Log($"Removing {gameObject.name} from EnemyManager");
         EnemyManager.Instance.RemoveEnemy(this);
+        Debug.Log($"Destroying {gameObject.name}. Active: {gameObject.activeSelf}");
         Destroy(gameObject);
     }
 
@@ -78,7 +99,8 @@ public abstract class EnemyBase : MonoBehaviour
     {
         if (_health != null)
         {
-            _health.OnDeath.RemoveListener(Die);
+            //_health.OnDeath.RemoveListener(Die);
+            _health.OnDeathWithTopWeapon.RemoveListener(Die);
         }
     }
 }

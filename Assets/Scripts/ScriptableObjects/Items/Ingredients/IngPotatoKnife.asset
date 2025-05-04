@@ -15,3 +15,5 @@ MonoBehaviour:
   ItemName: IngPotatoKnife
   type: 1
   MaxStackSize: 99
+  DropChange: 1
+  RequiredWeapon: Knife

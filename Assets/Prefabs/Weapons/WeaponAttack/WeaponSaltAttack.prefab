@@ -103,9 +103,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _speed: 10
-  _lifeTime: 1
+  _lifeTime: 0.5
   _explodeOnTimeout: 1
   _explosionPrefab: {fileID: 6762456398993171253, guid: 7085b152cd5ad114da9a17506b9e0cc7, type: 3}
+  _explosionDamage: 0
 --- !u!58 &7131294620000230815
 CircleCollider2D:
   m_ObjectHideFlags: 0

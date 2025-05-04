@@ -17,6 +17,8 @@ public class Projectile : MonoBehaviour
     [SerializeField] GameObject _explosionPrefab; // 폭발 시 프리펩
     [SerializeField] int _explosionDamage; // 폭발 시 대미지
 
+    string _weaponName; // 2025-05-04 KWS - 추가 :: explosion에 전달할 무기 이름
+
     Rigidbody2D _rb;
 
     private void Awake()
@@ -38,6 +40,7 @@ public class Projectile : MonoBehaviour
             GameObject explosionInstance = Instantiate(_explosionPrefab, transform.position, Quaternion.identity);
             Explosion explosion = explosionInstance.GetComponent<Explosion>();
             explosion.SetDamage(_explosionDamage);
+            explosion.SetWeaponName(_weaponName);
         }
     }
 
@@ -52,5 +55,12 @@ public class Projectile : MonoBehaviour
     public void SetExplosionDamage(int damage)
     {
         _explosionDamage = damage;
+    }
+
+    // 2025-05-04 KWS - 추가
+    // 무기 이름도 전달
+    public void SetWeaponName(string weaponName)
+    {
+        _weaponName = weaponName;
     }
 }

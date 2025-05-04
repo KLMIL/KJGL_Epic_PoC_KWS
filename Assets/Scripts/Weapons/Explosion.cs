@@ -20,6 +20,8 @@ public class Explosion: MonoBehaviour
     
     CircleCollider2D _collider2D;
 
+    string _weaponName;
+
     private void Awake()
     {
         _collider2D = GetComponent<CircleCollider2D>();
@@ -66,5 +68,12 @@ public class Explosion: MonoBehaviour
     {
         _damage = newDamage;
         transform.GetComponent<AttackTrigger>().SetDamage(_damage);
+    }
+
+    // 2025-05-04 KWS - 추가 :: 무기 이름
+    public void SetWeaponName(string weaponName)
+    {
+        _weaponName = weaponName;
+        transform.GetComponent<AttackTrigger>().SetWeaponName(_weaponName);
     }
 }

@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 1528690490770159179}
   - component: {fileID: 3381605077620931276}
   - component: {fileID: 4038410038417045415}
+  - component: {fileID: 7449620907897141026}
   - component: {fileID: 7794505194906381261}
   m_Layer: 0
   m_Name: EnemySpinach
@@ -102,7 +103,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b3587c6eedac15b4dae7f12fc6ca9130, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _maxHealth: 100
   _attackCooldown: 2
   _sporePrefab: {fileID: 5008232503957203005, guid: 2f2e4355fda272947a63e53c3d1f6c7d, type: 3}
   _sporeSpeed: 5
@@ -121,6 +121,28 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _maxHealth: 100
+  OnDeathWithTopWeapon:
+    m_PersistentCalls:
+      m_Calls: []
+  OnDeath:
+    m_PersistentCalls:
+      m_Calls: []
+--- !u!114 &7449620907897141026
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3625136681811785365}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ac66f0117a0389c4484e62800d493fea, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _possibleDrops:
+  - {fileID: 11400000, guid: 459242c38c94b5a44bfd1490b778d638, type: 2}
+  - {fileID: 11400000, guid: 42815891a1a6ad84895523034df2176e, type: 2}
+  - {fileID: 11400000, guid: cc3b9ea1941e2b94cb7d98b4888c084b, type: 2}
 --- !u!61 &7794505194906381261
 BoxCollider2D:
   m_ObjectHideFlags: 0

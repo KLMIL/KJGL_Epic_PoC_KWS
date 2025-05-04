@@ -41,6 +41,7 @@ public class WeaponSalt : MonoBehaviour, IWeapon
             Vector2 direction = transform.right;
             projectile.Initialize(direction);
             projectile.SetExplosionDamage(_damage);
+            projectile.SetWeaponName(Name);
         }
 
         Debug.Log("Salt: Sprinkling salt in a wide area");

@@ -2,7 +2,7 @@
  * Script Name: AttackTrigger
  * Author: 김우성
  * Date Created: 2025-05-02
- * Last Modified: 0000-00-00
+ * Last Modified: 2025-05-04
  * Description
  * - 공격 프리펩의 트리거 콜라이더로 적 감지 및 대미지 적용
  *********************************************************/
@@ -25,12 +25,22 @@ public class AttackTrigger : MonoBehaviour
     {
         _projectile = GetComponent<Projectile>();
         // 아마, 이렇게 하면 이름 못얻어올듯.
-        _weaponName = GetComponentInParent<IWeapon>()?.Name ?? "Unknown"; // 부모 개체에서 이름 얻기
+        // 2025-05-04 KWS - DEPRECATED
+        // 따로 함수 생성하면서 DEP
+        //_weaponName = GetComponentInParent<IWeapon>()?.Name ?? "Unknown"; // 부모 개체에서 이름 얻기
     }
 
     public void SetDamage(int newDamage)
     {
         _damage = newDamage;
+    }
+
+    // 2025-05-04 KWS - 수정
+    // 공격한 무기 이름을 기록하도록 수정
+    public void SetWeaponName(string weaponName)
+    {
+        _weaponName = weaponName;
+        Debug.Log($"AttackTrigger: Set weapon name to {_weaponName}");
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -42,7 +52,9 @@ public class AttackTrigger : MonoBehaviour
             Health health = collision.GetComponent<Health>();
             if (health != null)
             {
-                health.TakeDamage(_damage);
+                // 2025-05-04 KWS
+                // TakeDamage 함수 수정을 위해 문자열 삽입
+                health.TakeDamage(_damage, _weaponName);
             }
             if (_projectile != null)
             {

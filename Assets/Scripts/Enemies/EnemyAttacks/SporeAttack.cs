@@ -2,7 +2,7 @@
  * Script Name: SporeAttack
  * Author: 김우성
  * Date Created: 2025-05-01
- * Last Modified: 0000-00-00
+ * Last Modified: 2025-05-04
  * Description: 
  * - 식물 몬스터 중, 포자 공격 기능
  *********************************************************/
@@ -42,7 +42,9 @@ public class SporeAttack : MonoBehaviour, IEnemyAttack
             if (playerHealth != null)
             {
                 Debug.Log($"SporeAttack hit Player, dealing {_damage} damage");
-                playerHealth.TakeDamage(_damage);
+                // 2025-05-04 KWS
+                // TakeDamage 함수 수정을 위해 임시 문자열 삽입
+                playerHealth.TakeDamage(_damage, "Unknown");
             }
             Destroy(gameObject);
         }
